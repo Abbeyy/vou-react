@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import {
   BrowserRouter as Router,
   Switch,
@@ -21,18 +23,30 @@ class App extends React.Component {
         <div className="App">
           <Switch>
             <Route exact path="/">
-              <Login></Login>
+              <div>
+                <Header></Header>
+                <Login></Login>
+                <Footer></Footer>
+              </div>
             </Route>
             <Route path="/login">
-              <Login></Login>
-            </Route>
+              <div>
+                <Header></Header>
+                <Login></Login>
+                <Footer></Footer>
+              </div>            </Route>
             <Route path="/dashboard">
               {this.state.loggedin ?
-                <Dashboard></Dashboard>
+                <div>
+                  <Header></Header>
+                  <Dashboard></Dashboard>
+                  <Footer></Footer>
+                </div>
               : <div>
-                <span>You need to login before you can access the dashboard.</span>
-                <Login></Login>
-              </div>
+                  <Header></Header>
+                  <span>You need to login before you can access the dashboard.</span>
+                  <Login></Login>
+                  <Footer></Footer>              </div>
               }
             </Route>
           </Switch>
