@@ -1,12 +1,16 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import {LOG_IN} from '../js/constants/actionTypes';
+
+import { logIn } from '../js/actions/index';
 
 class Login extends React.Component {
     constructor(props) {
-        super();
-        this.props = props;
-        this.state = {username: '', password: ''};
+        super(props);
+        console.log(this.props);
+        this.state = {username:'', password: ''}
     }
 
     onChangeText = (e) => {
@@ -15,6 +19,14 @@ class Login extends React.Component {
         } else {
             this.setState({password: e.target.value}); //encrypt within app?
         }
+    }
+
+    validateLogin = (e) => {
+        //Use async to speak to backend to verify login.
+        //For now, forces accept.
+
+        //How to handle from here? redirect user to /dashboard and set loggedIn state where, to true?
+        this.props.logIn();
     }
 
     render() {
@@ -32,7 +44,7 @@ class Login extends React.Component {
                     {/* <Form.Group name="keepLoggedInGroup" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Keep me logged in?" />
                     </Form.Group> */}
-                    <Button variant="primary" type="submit">
+                    <Button variant="primary" onClick={this.validateLogin}>
                         Log In
                     </Button>
                 </Form>
@@ -41,4 +53,17 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapStateToProps = function (state) {
+    return {
+      username: state.auth.username,
+      loggedIn: state.auth.loggedIn
+    }
+  }
+
+  const mapDispatchToProps = {
+    logIn,
+   };
+  
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+  

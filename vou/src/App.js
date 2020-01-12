@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
@@ -12,9 +13,48 @@ import {
 } from "react-router-dom";
 
 class App extends React.Component {
-  constructor() {
-    super();
-    this.state = { loggedin: false };
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+  }
+
+  produceLogin = () => {
+    return (
+      <div>
+        {this.props.loggedIn ?
+          <div>
+            <Header></Header>
+            <Dashboard></Dashboard>
+            <Footer></Footer>
+          </div>
+          : <div>
+            <Header></Header>
+            <Login></Login>
+            <Footer></Footer>
+          </div>
+        }
+      </div>
+    );
+  }
+
+  produceLoginWithWarning = () => {
+    return (
+      <div>
+        {this.props.loggedIn ?
+          <div>
+            <Header></Header>
+            <Dashboard></Dashboard>
+            <Footer></Footer>
+          </div>
+          : <div>
+            <Header></Header>
+            <span>You need to login before you can access the dashboard.</span>
+            <Login></Login>
+            <Footer></Footer>
+          </div>
+        }
+      </div>
+    );
   }
 
   render() {
@@ -23,31 +63,13 @@ class App extends React.Component {
         <div className="App">
           <Switch>
             <Route exact path="/">
-              <div>
-                <Header></Header>
-                <Login></Login>
-                <Footer></Footer>
-              </div>
+              {this.produceLogin}
             </Route>
             <Route path="/login">
-              <div>
-                <Header></Header>
-                <Login></Login>
-                <Footer></Footer>
-              </div>            </Route>
+            {this.produceLogin}
+            </Route>
             <Route path="/dashboard">
-              {this.state.loggedin ?
-                <div>
-                  <Header></Header>
-                  <Dashboard></Dashboard>
-                  <Footer></Footer>
-                </div>
-              : <div>
-                  <Header></Header>
-                  <span>You need to login before you can access the dashboard.</span>
-                  <Login></Login>
-                  <Footer></Footer>              </div>
-              }
+            {this.produceLoginWithWarning}
             </Route>
           </Switch>
         </div>
@@ -56,4 +78,12 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = function (state) {
+  return {
+    username: state.auth.username,
+    loggedIn: state.auth.loggedIn
+  }
+}
+
+export default connect(mapStateToProps)(App);
+
