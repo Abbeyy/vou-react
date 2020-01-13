@@ -10,9 +10,13 @@ class Header extends React.Component {
 
     //Not firing rerender?
     loggedInNavbar = () => {
+        const signedInText = 'Signed in as:  ' + this.props.username + '\xa0\xa0';
         return (
-            <Navbar expand="lg" id="cappucino-3"> 
+            <Navbar expand="lg" id="cappucino-3">
                 <Navbar.Brand id="cappucino-1-text-bold">vou | voting for you</Navbar.Brand>
+                <Navbar.Text id="cappucino-1-text">
+                        {signedInText}
+                    </Navbar.Text>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
