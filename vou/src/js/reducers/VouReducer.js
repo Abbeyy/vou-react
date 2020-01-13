@@ -1,5 +1,5 @@
 //https://www.valentinog.com/blog/redux/
-import {LOG_IN, LOG_OUT, SET_USERNAME} from '../constants/actionTypes';
+import {LOG_IN, LOG_OUT} from '../constants/actionTypes';
 
 const initialState = require('./initialstate.json');
 
@@ -11,12 +11,10 @@ const initialState = require('./initialstate.json');
 export default (state = initialState, action) => {
     switch (action.type) {
       case LOG_IN:
-        return {...state, auth: {...state.auth, loggedIn: true}};
+        console.log(action.payload);
+        return {...state, auth: {loggedIn: true, username: action.payload}};
       case LOG_OUT:
         return {...state, auth: {...state.auth, loggedIn: false}};
-        // case GET_USERNAME: selector instead
-        case SET_USERNAME :
-          return {...state, auth: {...state.auth, username: action.payload}};
       default:
         return state
     }

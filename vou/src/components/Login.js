@@ -13,7 +13,7 @@ class Login extends React.Component {
     }
 
     onChangeText = (e) => {
-        if (e.name === 'username') {
+        if (e.target.name === 'username') {
             this.setState({username: e.target.value});
         } else {
             this.setState({password: e.target.value}); //encrypt within app?
@@ -25,7 +25,7 @@ class Login extends React.Component {
         //For now, forces accept.
 
         //How to handle from here? redirect user to /dashboard and set loggedIn state where, to true?
-        this.props.logIn();
+        this.props.logIn(this.state.username);
     }
 
     render() {
