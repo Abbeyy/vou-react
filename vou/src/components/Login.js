@@ -2,7 +2,6 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Form, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import {LOG_IN} from '../js/constants/actionTypes';
 
 import { logIn } from '../js/actions/index';
 
@@ -34,17 +33,19 @@ class Login extends React.Component {
             <div className="Login">
                 <Form name="loginForm">
                     <Form.Group name="usernameGroup" controlId="formBasicEmail">
-                        <Form.Label>Username</Form.Label>
+                        <Form.Label id="cappucino-2-text-bold">Username</Form.Label>
                         <Form.Control name="username" type="text" placeholder="Enter Username" onChange={this.onChangeText}/>
                     </Form.Group>
                     <Form.Group name="passwordGroup" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
+                        <Form.Label id="cappucino-2-text-bold">Password</Form.Label>
                         <Form.Control name="password" type="password" placeholder="Password" onChange={this.onChangeText}/>
                     </Form.Group>
                     {/* <Form.Group name="keepLoggedInGroup" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Keep me logged in?" />
                     </Form.Group> */}
-                    <Button variant="primary" onClick={this.validateLogin}>
+                    <br></br>
+                    <br></br>
+                    <Button id="login-button" onClick={this.validateLogin}>
                         Log In
                     </Button>
                 </Form>

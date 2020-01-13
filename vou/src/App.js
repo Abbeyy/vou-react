@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import './App.css';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Header from './components/Header';
@@ -11,6 +10,10 @@ import {
   Route
   // Link
 } from "react-router-dom";
+import { Jumbotron, Badge } from 'react-bootstrap';
+
+import './App.css';
+import './vou.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -24,12 +27,16 @@ class App extends React.Component {
         {this.props.loggedIn ?
           <div>
             <Header></Header>
+            <Jumbotron id="cappucino-1">
             <Dashboard></Dashboard>
+            </Jumbotron>
             <Footer></Footer>
           </div>
           : <div>
             <Header></Header>
+            <Jumbotron id="cappucino-1">
             <Login></Login>
+            </Jumbotron>
             <Footer></Footer>
           </div>
         }
@@ -43,16 +50,30 @@ class App extends React.Component {
         {this.props.loggedIn ?
           <div>
             <Header></Header>
+            <Jumbotron id="cappucino-1">
             <Dashboard></Dashboard>
+            </Jumbotron>
             <Footer></Footer>
           </div>
           : <div>
             <Header></Header>
-            <span>You need to login before you can access the dashboard.</span>
+            <Jumbotron id="cappucino-1">
+            {this.errorMessage("You must login before you can access the dashboard.")}
             <Login></Login>
+            </Jumbotron>
             <Footer></Footer>
           </div>
         }
+      </div>
+    );
+  }
+
+  errorMessage = (msg) => {
+    return (
+      <div>
+        <h3><Badge id="error-msg">{msg}</Badge></h3>
+        <br></br>
+        <br></br>
       </div>
     );
   }

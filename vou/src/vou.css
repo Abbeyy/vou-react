@@ -1,0 +1,77 @@
+/* bootstrap fixes */
+
+/* html, body, Router {
+    height: 100vh;
+    background-color: yellow;
+} */
+
+.jumbotron {
+    margin-bottom: 0px;
+ }
+
+/* colour scheme */
+
+#cappucino-5 {
+    background-color: #3c2f2f;
+}
+
+#cappucino-4 {
+    background-color: #4b3832;
+}
+
+#cappucino-3 {
+    background-color: #854442;
+}
+
+#cappucino-2 {
+    background-color: #be9b7b;
+}
+
+#cappucino-1 {
+    background-color: #fff4e6;
+}
+
+#cappucino-5-text {
+    color: #3c2f2f;
+}
+
+#cappucino-4-text {
+    color: #4b3832;
+}
+
+#cappucino-3-text {
+    color: #854442;
+}
+
+#cappucino-2-text {
+    color: #be9b7b;
+}
+
+#cappucino-2-text-bold {
+    color: #be9b7b;
+    font-weight: 800;
+}
+
+#cappucino-1-text {
+    color: #fff4e6;
+}
+
+#cappucino-1-text-bold {
+    color: #fff4e6;
+    font-weight: 800;
+}
+
+/* misc styling */
+
+#login-button {
+    background-color: #854442;
+    color: #fff4e6;
+    border-color: #854442;
+    font-weight: 800;
+}
+
+#error-msg {
+    background-color: #4b3832;
+    color: #fff4e6;
+    font-weight: 500;
+}

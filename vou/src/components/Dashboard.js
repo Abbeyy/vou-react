@@ -1,9 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-class Login extends React.Component {
+class Dashboard extends React.Component {
     constructor(props) {
         super();
-        this.props = props;
         console.log(props);
     }
     
@@ -16,4 +16,11 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+const mapStateToProps = function (state) {
+    return {
+      username: state.auth.username,
+      loggedIn: state.auth.loggedIn
+    }
+  }
+
+export default connect(mapStateToProps)(Dashboard);

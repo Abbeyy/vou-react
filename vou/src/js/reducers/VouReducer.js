@@ -1,17 +1,11 @@
 //https://www.valentinog.com/blog/redux/
 import {LOG_IN, LOG_OUT, SET_USERNAME} from '../constants/actionTypes';
 
-const initialState = {
-  auth : {
-    loggedIn: false,
-    username: ''
-  }
-};
+const initialState = require('./initialstate.json');
 
 // Redux should NOT impact the original state. (immutability issues)
 //   use concat(), slice(), or the spread operator for arrays
 //   use Object.assign() or object spread of objects
-
 
 //A data store: given an initial state to the data, and figures out what to do to it by the action given.
 export default (state = initialState, action) => {
