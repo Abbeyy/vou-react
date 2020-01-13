@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import DashboardMap from './DashboardMap';
 
 class Dashboard extends React.Component {
     constructor(props) {
@@ -11,6 +12,7 @@ class Dashboard extends React.Component {
         return(
             <div className="Dashboard">
                 <span>Dashboard here</span>
+                <DashboardMap></DashboardMap>
             </div>
         );
     }
